@@ -4,7 +4,6 @@
 
 <head>
 
-<meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
