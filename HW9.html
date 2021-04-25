@@ -423,7 +423,7 @@ $(document).ready(function () {
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Facebook Source Breakdown by Hour&#39;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tiktok <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(source, <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">with_tz</span>(created_at, <span class="st">&quot;EST&quot;</span>))) <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
@@ -432,7 +432,7 @@ $(document).ready(function () {
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Tiktok Source Breakdown by Hour&#39;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <p>We see that the vast majority of Facebook’s tweets are put out using Khoros Publishing between the hours of 10 AM and 8 PM. TikTok publishes most of its tweets through the Twitter Web App and Fan Experiences Platform—usually between 10 AM and 8 PM, like Facebook.</p>
 <p>We want to see if both users’ tweets tend to differ in length, so we create a histogram for each user.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fb_wordcounts <span class="ot">&lt;-</span> </span>
@@ -452,9 +452,9 @@ $(document).ready(function () {
 <pre><code>## Facebook Mean Tweet Length: 163.289555972483
 ## TikTok Mean Tweet Length: 112.557921102066</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tiktok_wordcounts<span class="sc">$</span>tweetLength, <span class="at">main =</span> <span class="st">&quot;TikTok - Histogram of Tweet Lengths&quot;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(fb_wordcounts<span class="sc">$</span>tweetLength, <span class="at">main =</span> <span class="st">&quot;Facebook - Histogram of Tweet Lengths&quot;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 <p>As we see, TikTok’s tweet lengths are right-skewed, with most tweets being around 100 words long. Facebook, on the other hand, seems to post longer tweets, with a more normal distribution centered around 150 words long. Tweet length seems like a useful feature to include in our predictive model.</p>
 <p>Next, we look at whether there is a difference in the share of Tweets that include pictures.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fb_picture_counts <span class="ot">&lt;-</span> </span>
@@ -485,7 +485,7 @@ $(document).ready(function () {
 <span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(prop,<span class="dv">2</span>), <span class="st">&quot;%&quot;</span>)), </span>
 <span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
 <span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Percent of Facebook Tweets with Picture/link and Without&quot;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tiktok_picture_counts <span class="sc">%&gt;%</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> n, <span class="at">fill =</span> picture)) <span class="sc">+</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
@@ -494,7 +494,7 @@ $(document).ready(function () {
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(prop,<span class="dv">2</span>), <span class="st">&quot;%&quot;</span>)), </span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Percent of TikTok Tweets with Picture/link and Without&quot;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
 <p>~86% of Facebook’s tweets contain pictures/links, while only ~52% of TikTok’s tweets contain pictures/links. This could be another useful predictor to include in our model.</p>
 </div>
 <div id="iv.-sentiment-analysis" class="section level1">
@@ -551,7 +551,7 @@ $(document).ready(function () {
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Occurrences&quot;</span>) <span class="sc">+</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Facebook Word Frequency&quot;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tiktok_most_common <span class="ot">&lt;-</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  tiktok_words <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
@@ -564,7 +564,7 @@ $(document).ready(function () {
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Occurrences&quot;</span>) <span class="sc">+</span></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;TikTok Word Frequency&quot;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>facebook_cloud <span class="ot">&lt;-</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  fb_words  <span class="sc">%&gt;%</span> </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word) <span class="sc">%&gt;%</span> </span>
@@ -576,7 +576,7 @@ $(document).ready(function () {
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;#FF0099&quot;</span>, <span class="st">&quot;#6600CC&quot;</span>, </span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>, </span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;brown&quot;</span>))</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tiktok_cloud <span class="ot">&lt;-</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  tiktok_words  <span class="sc">%&gt;%</span> </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word) <span class="sc">%&gt;%</span> </span>
@@ -588,7 +588,7 @@ $(document).ready(function () {
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;#FF0099&quot;</span>, <span class="st">&quot;#6600CC&quot;</span>, </span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>, </span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;brown&quot;</span>))</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
 <p>The most common word that Facebook uses is “kn,” and it’s unclear what this means. We did a quick search and found that Facebook signs off a lot of its replies with “-KN.” See here: <a href="https://twitter.com/Facebook/status/1185298970832244736" class="uri">https://twitter.com/Facebook/status/1185298970832244736</a></p>
 <p>Facebook frequently uses neutral and security-/support-related words: “account,” “report,” “secure,” “experiencing,” etc.</p>
 <p>TikTok uses a lot more anticipatory words like “tomorrow,” “prizes,” “nomination,” “winner.” TikTok’s Twitter account actually has a lot of sweepstakes.</p>
@@ -625,7 +625,7 @@ $(document).ready(function () {
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Sentiment&quot;</span>) <span class="sc">+</span></span>
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Facebook Sentiment&quot;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tiktok_sentiment_analysis <span class="ot">&lt;-</span> </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  tiktok_sentiment <span class="sc">%&gt;%</span> </span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sentiment) <span class="sc">%&gt;%</span> </span>
@@ -639,7 +639,7 @@ $(document).ready(function () {
 <span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
 <span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Sentiment&quot;</span>) <span class="sc">+</span></span>
 <span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;TikTok Sentiment&quot;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
 <p>It looks like Facebook’s tweets use more trust words while TikTok uses more words that reflect anticipation. We now show specifically which words are conveying each of these observed sentiments.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fb_sentiment_analysis <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>sentiment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;positive&quot;</span>, <span class="st">&quot;negative&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentiment =</span> <span class="fu">reorder</span>(sentiment, <span class="sc">-</span>n),</span>
@@ -650,7 +650,7 @@ $(document).ready(function () {
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
 <span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">&quot;count&quot;</span>, <span class="at">title=</span><span class="st">&quot;Facebook Sentiment Words&quot;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tiktok_sentiment_analysis <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>sentiment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;positive&quot;</span>, <span class="st">&quot;negative&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentiment =</span> <span class="fu">reorder</span>(sentiment, <span class="sc">-</span>n),</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">word =</span> <span class="fu">reorder</span>(word, <span class="sc">-</span>n)) <span class="sc">%&gt;%</span> <span class="fu">top_n</span>(<span class="dv">10</span>) <span class="ot">-&gt;</span> tiktok_sentiment_analysis2</span>
@@ -660,7 +660,7 @@ $(document).ready(function () {
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">&quot;count&quot;</span>, <span class="at">title=</span><span class="st">&quot;Tik Tok Sentiment Words&quot;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
 <p>Next, we examine texts on Facebook and Tiktok to see their positive-negative score by using the AFINN sentiment lexicon, a list of English terms manually rated for valence with an integer between -5 (negative) and +5 (positive) by Finn Årup Nielsen between 2009 and 2011.</p>
 <p>We use this lexicon to compute mean positivity scores for all words tweeted by each user.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run this to get afinn lexicon and save it as a csv</span></span>
@@ -826,7 +826,7 @@ $(document).ready(function () {
 <span id="cb26-121"><a href="#cb26-121" aria-hidden="true" tabindex="-1"></a>simple_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(user <span class="sc">~</span> ., </span>
 <span id="cb26-122"><a href="#cb26-122" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> train, <span class="at">method =</span> <span class="st">&quot;class&quot;</span>)</span>
 <span id="cb26-123"><a href="#cb26-123" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(simple_model, <span class="at">yesno =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>It seems that the most dominant predictors in the simple model were the presence (or non-presence) of Facebook’s most common words, along with tweet length and the presence of the word “tiktok.” I suspect this will be similar for other models, though perhaps sentiment will play a role too.</p>
 <p>We produce additional models using the bagging, random forests, and gradient boosting methods.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
@@ -869,16 +869,16 @@ $(document).ready(function () {
 <p>We also display four variable importance plots to see which variables each model identified as significant.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(simple_model, <span class="at">num_features =</span> <span class="dv">25</span>) <span class="sc">+</span> </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Simple Decision Tree - Variable Importance Plot&#39;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(bagging_model, <span class="at">num_features =</span> <span class="dv">25</span>) <span class="sc">+</span> </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Bagging - Variable Importance Plot&#39;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-15-2.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-15-2.png" width="672" /></p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(rf_model, <span class="at">num_features =</span> <span class="dv">25</span>) <span class="sc">+</span> </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Random Forests - Variable Importance Plot&#39;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-15-3.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-15-3.png" width="672" /></p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vip</span>(gbm_model, <span class="at">num_features =</span> <span class="dv">25</span>) <span class="sc">+</span> </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Gradient Boosting - Variable Importance Plot&#39;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-15-4.png" width="672" /></p>
+<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-15-4.png" width="672" /></p>
 <p>It seems that the simple decision tree, random forests model, and gradient boosting model placed the most importance on the presence of the word “kn” and the other commonly used words. The bagging model, on the other hand places little importance on the presence of these words and instead privileges tweet length, AFINN score, and sentiments. All of the ensemble methods identified tweet length as strongly predictive of the user. All four heavily weighted anticipation sentiments and AFINN scores.</p>
 </div>
 <div id="vi.-results-and-discussion" class="section level1">
