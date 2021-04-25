@@ -1,9 +1,5 @@
 
 
-BuildType: Website
-
-<!DOCTYPE html>
-
 <html>
 
 <head>
