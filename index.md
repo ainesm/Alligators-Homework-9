@@ -1310,7 +1310,7 @@ Gradient Boosting
 <div id="viii.-contributions" class="section level1">
 <h1>VIII. Contributions</h1>
 <p>As the authorship indicates, four teammates contributed to this analysis: Elaina Lin, Kim Nguyen, Meghan Aines, and Ryan Karbowicz.</p>
-</div>
+
 
 
 
