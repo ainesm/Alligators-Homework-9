@@ -329,9 +329,6 @@ $(document).ready(function () {
 </li>
 <li>
 
-  </div><!--/.container -->
-</div><!--/.navbar -->
-
 <div id="header">
 
 
