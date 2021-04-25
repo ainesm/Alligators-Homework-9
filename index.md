@@ -328,9 +328,7 @@ $(document).ready(function () {
   <a href="about.html">About</a>
 </li>
 <li>
-       
-      </ul>
-    </div><!--/.nav-collapse -->
+
   </div><!--/.container -->
 </div><!--/.navbar -->
 
@@ -432,7 +430,8 @@ $(document).ready(function () {
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Tiktok Source Breakdown by Hour&#39;</span>)</span></code></pre></div>
-<p><img src="HW9_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p><img src="HW9_files/figure-html/unnamed-</ul>
+</div><!--/.nav-collapse -->-4-2.png" width="672" /></p>
 <p>We see that the vast majority of Facebook’s tweets are put out using Khoros Publishing between the hours of 10 AM and 8 PM. TikTok publishes most of its tweets through the Twitter Web App and Fan Experiences Platform—usually between 10 AM and 8 PM, like Facebook.</p>
 <p>We want to see if both users’ tweets tend to differ in length, so we create a histogram for each user.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fb_wordcounts <span class="ot">&lt;-</span> </span>
