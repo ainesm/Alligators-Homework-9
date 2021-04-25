@@ -418,7 +418,7 @@ $(document).ready(function () {
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Facebook Source Breakdown by Hour&#39;</span>)</span></code></pre></div>
-<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tiktok <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(source, <span class="at">hour =</span> <span class="fu">hour</span>(<span class="fu">with_tz</span>(created_at, <span class="st">&quot;EST&quot;</span>))) <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
@@ -427,7 +427,7 @@ $(document).ready(function () {
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;Tiktok Source Breakdown by Hour&#39;</span>)</span></code></pre></div>
-<p><img src="Alligators-Homework-9/figure-html/unnamed-</ul>
+<p><img src="figure-html/unnamed-</ul>
 </div><!--/.nav-collapse -->-4-2.png" width="672" /></p>
 <p>We see that the vast majority of Facebook’s tweets are put out using Khoros Publishing between the hours of 10 AM and 8 PM. TikTok publishes most of its tweets through the Twitter Web App and Fan Experiences Platform—usually between 10 AM and 8 PM, like Facebook.</p>
 <p>We want to see if both users’ tweets tend to differ in length, so we create a histogram for each user.</p>
@@ -448,9 +448,9 @@ $(document).ready(function () {
 <pre><code>## Facebook Mean Tweet Length: 163.289555972483
 ## TikTok Mean Tweet Length: 112.557921102066</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tiktok_wordcounts<span class="sc">$</span>tweetLength, <span class="at">main =</span> <span class="st">&quot;TikTok - Histogram of Tweet Lengths&quot;</span>)</span></code></pre></div>
-<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(fb_wordcounts<span class="sc">$</span>tweetLength, <span class="at">main =</span> <span class="st">&quot;Facebook - Histogram of Tweet Lengths&quot;</span>)</span></code></pre></div>
-<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p><img src="figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 <p>As we see, TikTok’s tweet lengths are right-skewed, with most tweets being around 100 words long. Facebook, on the other hand, seems to post longer tweets, with a more normal distribution centered around 150 words long. Tweet length seems like a useful feature to include in our predictive model.</p>
 <p>Next, we look at whether there is a difference in the share of Tweets that include pictures.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fb_picture_counts <span class="ot">&lt;-</span> </span>
@@ -481,7 +481,7 @@ $(document).ready(function () {
 <span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(prop,<span class="dv">2</span>), <span class="st">&quot;%&quot;</span>)), </span>
 <span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> </span>
 <span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Percent of Facebook Tweets with Picture/link and Without&quot;</span>)</span></code></pre></div>
-<p><img src="Alligators-Homework-9/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tiktok_picture_counts <span class="sc">%&gt;%</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> n, <span class="at">fill =</span> picture)) <span class="sc">+</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
